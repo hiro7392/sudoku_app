@@ -1,5 +1,4 @@
-extern crate hello;
-use hello::ThreadPool;
+use sudoku::ThreadPool;
 
 use std::fs::File;
 use std::io::prelude::*;

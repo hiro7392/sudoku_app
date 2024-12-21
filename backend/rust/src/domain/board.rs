@@ -1,6 +1,4 @@
-mod http_server;
-
-struct Board {
+pub struct Board {
     board: [Option<u8>; 9 * 9],
 }
 
@@ -8,7 +6,7 @@ impl Board {
     fn new(board: [Option<u8>; 9 * 9]) -> Self {
         Board { board }
     }
-    fn get_sample_data() -> Board {
+    pub fn get_sample_data() -> Board {
         let board = [
             Some(5),
             Some(3),
@@ -95,7 +93,7 @@ impl Board {
         Board::new(board)
     }
 
-    fn display(&self) {
+    pub fn display(&self) {
         for (i, cell) in self.board.iter().enumerate() {
             // show if iter is divisible by 9 return
 
@@ -117,17 +115,4 @@ impl Board {
             // if end of 3x3 block print new line
         }
     }
-}
-
-fn main() {
-    println!("Welcome to Sudoku Solver");
-
-    let board = Board::get_sample_data();
-    println!("Initial Board");
-    board.display();
-
-    http_server::listen();
-
-    // io::stdin().read_line(&mut guess)
-    //     .expect("Failed to read line");
 }
