@@ -1,14 +1,5 @@
 import React from 'react';
-import SudokuBlock from './Block';
-import {createStyles} from '@mantine/core';
-
-const useStyles = createStyles((theme) => ({
-    board: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: theme.spacing.sm,
-    },
-}));
+import Block from "../components/Block.tsx";
 
 type SudokuBoardProps = {
     board: (number | null)[][];
@@ -16,7 +7,6 @@ type SudokuBoardProps = {
 };
 
 const Board: React.FC<SudokuBoardProps> = ({board, onCellChange}) => {
-    const {classes} = useStyles();
 
     const getBlockData = (blockRow: number, blockCol: number) => {
         const startRow = blockRow * 3;
@@ -27,10 +17,10 @@ const Board: React.FC<SudokuBoardProps> = ({board, onCellChange}) => {
     };
 
     return (
-        <div className={classes.board}>
+        <div>
             {Array.from({length: 3}, (_, blockRow) =>
                 Array.from({length: 3}, (_, blockCol) => (
-                    <SudokuBlock
+                    <Block
                         key={`${blockRow}-${blockCol}`}
                         block={getBlockData(blockRow, blockCol)}
                         onCellChange={(row, col, value) =>
