@@ -26,7 +26,7 @@ export type CellData = {
 }
 
 
-export const createInitialData=(data:  (number | null) [9][9]):BoardData=> {
+export const createInitialData=(data:  (number | null) [][]):BoardData=> {
   const boardData = [];
   for (let i = 0; i < 9; i++) {
     const  blockData=[];
@@ -42,4 +42,10 @@ export const createInitialData=(data:  (number | null) [9][9]):BoardData=> {
     boardData.push(blockData as BlockData);
   }
   return boardData as BoardData;
+}
+
+export const checkBlock = (block: BlockData): boolean => {
+  // 1から9までの数字が1つずつ入っているかチェック
+  const values = block.map((cell) => cell.value);
+  return values.sort().join('') === '123456789';
 }

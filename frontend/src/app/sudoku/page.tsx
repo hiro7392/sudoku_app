@@ -1,8 +1,8 @@
-import { Block } from "@/components/Block";
 import React from "react";
 import { Board } from "@/components/Board";
-import { Box, Flex, Title } from "@mantine/core";
+import { AppShell, AppShellHeader, Box, Flex, Group, Title } from "@mantine/core";
 import { createInitialData } from "@/domain/Sudoku";
+import Image from "next/image";
 
 
 const sampleData: (number | null) [][] = [
@@ -18,11 +18,21 @@ const sampleData: (number | null) [][] = [
 ]
 
 export default function Page() {
-  //const {board, updateCell, isSolved} = useSudoku();
-  console.log('sample', sampleData);
 
   return (
-    <Flex justify={"flex-start"} direction={"column"} align={"center"} gap={"xl"}>
+    <AppShell header={{ height: 60 }} padding="md">
+    <AppShellHeader>
+      <Group className="h-full px-md">
+        <Image
+          className="dark:invert"
+          src="https://nextjs.org/icons/next.svg"
+          alt="logo"
+          width={100}
+          height={100}
+        />
+      </Group>
+    </AppShellHeader>
+    <Flex justify={"flex-start"} direction={"column"} align={"center"} gap={"xl"} mt={"100"}>
       <Title>
         Sudoku Puzzle
       </Title>
@@ -30,5 +40,6 @@ export default function Page() {
         <Board board={ createInitialData(sampleData)}/>
       </Box>
     </Flex>
+    </AppShell>
   );
 };

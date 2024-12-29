@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { CellData } from "@/domain/Sudoku";
 import { Box, Input } from "@mantine/core";
 
@@ -9,6 +9,7 @@ type CellProps = {
 const Cell: FC<CellProps> = ({ cellData }) => {
 
   const numStr = cellData.value ? cellData.value.toString() : "・";
+
   return (
     <Box
       style={{
@@ -19,6 +20,7 @@ const Cell: FC<CellProps> = ({ cellData }) => {
     >
       <Input
         placeholder={numStr}
+        value = {numStr}
         disabled={cellData.isLocked} // ロックされている場合は入力不可にする
         style={{
           border: "none", // Input のボーダーを削除

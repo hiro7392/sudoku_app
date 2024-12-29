@@ -1,7 +1,7 @@
 import { Box, SimpleGrid } from "@mantine/core";
 import Cell from "@/components/Cell";
 import { FC } from "react";
-import { BlockData } from "@/domain/Sudoku";
+import { BlockData, checkBlock } from "@/domain/Sudoku";
 
 
 type SudokuBlockProps = {
