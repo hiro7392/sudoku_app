@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Block } from "@/components/Block";
 import { SimpleGrid } from "@mantine/core";
 import { BoardData } from "@/domain/Sudoku";
@@ -8,6 +8,10 @@ type BoardProps = {
 }
 
 export const Board:FC<BoardProps> = (props:BoardProps) => {
+
+  const [boardDate, setBoardData] = useState(props.board);
+
+
 
 return <SimpleGrid cols={3} spacing={1} >
   <Block blockData={props.board[0]} />

@@ -1,15 +1,17 @@
-import { FC, useState } from "react";
+'use client';
+import { FC } from "react";
 import { CellData } from "@/domain/Sudoku";
 import { Box, Input } from "@mantine/core";
 
 type CellProps = {
   cellData: CellData;
+  onChange: (index:number, num:number) => void;
 };
 
 const Cell: FC<CellProps> = ({ cellData }) => {
 
-  const numStr = cellData.value ? cellData.value.toString() : "・";
 
+  const numStr = cellData.value ? cellData.value.toString() : "・";
   return (
     <Box
       style={{
